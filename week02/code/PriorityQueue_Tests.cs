@@ -6,9 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 public class PriorityQueueTests
 {
     [TestMethod]
-    // Scenario: 
-    // Expected Result: 
-    // Defect(s) Found: 
+    // Scenario: Enqueue a single item with priority 1 and dequeue it.
+    // Expected Result: The item should be dequeued correctly.
+    // Defect(s) Found: None, test passed as expected.
     public void TestPriorityQueue_1()
 {
     var priorityQueue = new PriorityQueue();
@@ -18,9 +18,9 @@ public class PriorityQueueTests
 }
 
     [TestMethod]
-    // Scenario: 
-    // Expected Result: 
-    // Defect(s) Found: 
+    // Scenario: Enqueue items with different priorities and dequeue the highest priority item.
+    // Expected Result: The highest priority item should be dequeued first.
+    // Defect(s) Found:The priority queue was not correctly ordering items based on priority. 
     public void TestPriorityQueue_SingleHighPriorityDequeue()
     {
        var pq = new PriorityQueue();
@@ -36,6 +36,9 @@ public class PriorityQueueTests
     // Add more test cases as needed below.
 
     [TestMethod]
+    // Scenario: Enqueue items with the same priority and dequeue them.
+    // Expected Result: Items with the same priority should be dequeued in the order they were last inserted.
+    // Defect(s) Found: The priority queue was not correctly handling items with the same priority, dequeuing them in the wrong order.
     public void TestPriorityQueue_DequeueOrderOnSamePriority()
     {
         var pq = new PriorityQueue();
