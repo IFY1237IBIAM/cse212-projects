@@ -11,35 +11,53 @@ public class Node
 
     public void Insert(int value)
     {
-        // TODO Start Problem 1
-
         if (value < Data)
         {
-            // Insert to the left
             if (Left is null)
                 Left = new Node(value);
             else
                 Left.Insert(value);
         }
-        else
+        else if (value > Data) // only insert if value is not equal
         {
-            // Insert to the right
             if (Right is null)
                 Right = new Node(value);
             else
                 Right.Insert(value);
         }
+        // value == Data -> do nothing (prevents duplicates)
     }
 
     public bool Contains(int value)
     {
         // TODO Start Problem 2
-        return false;
+            if (value == Data)
+        {
+            return true; // We found the value
+        }
+        else if (value < Data)
+        {
+            // Look in the left subtree
+            if (Left is null)
+                return false; // No more nodes to search
+            else
+                return Left.Contains(value); // Recursive call
+        }
+        else // value > Data
+        {
+            // Look in the right subtree
+            if (Right is null)
+                return false;
+            else
+                return Right.Contains(value); // Recursive call
+        }
     }
 
     public int GetHeight()
     {
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        int leftHeight = Left?.GetHeight() ?? 0;
+        int rightHeight = Right?.GetHeight() ?? 0;
+        return 1 + Math.Max(leftHeight, rightHeight); // Replace this line with the correct return statement(s)
     }
 }
